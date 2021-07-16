@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="breeze.js">
+            <arguments>
+                <argument name="bundles" xsi:type="array">
+                    <item name="default" xsi:type="array">
+                        <item name="items" xsi:type="array">
+                            <item name="Mirasvit_CacheWarmer" xsi:type="array">
+                                <item name="names" xsi:type="array">
+                                    <item name="toolbar" xsi:type="string">Mirasvit_CacheWarmer/js/toolbar</item>
+                                    <item name="track" xsi:type="string">Mirasvit_CacheWarmer/js/track</item>
+                                </item>
+                                <item name="path" xsi:type="string">Swissup_BreezeIntegrations/js/mirasvit/cachewarmer</item>
+                                <item name="enabled" xsi:type="helper" helper="Swissup\Breeze\Helper\Config::isEnabled">
+                                    <param name="path">cache_warmer/general/enabled</param>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>
