@@ -267,5 +267,11 @@
                     );
                 });
         }
-    })
+    });
+
+    $(document).on('breeze:load', function () {
+        $('.grouped .amxnotif-block .amxnotif-guest-email')
+            .removeAttr('required')
+            .attr('data-validate', '{}');
+    });
 })();
