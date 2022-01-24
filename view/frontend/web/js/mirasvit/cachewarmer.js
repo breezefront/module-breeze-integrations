@@ -44,8 +44,8 @@
                 },
 
                 /** [success description] */
-                success: function (response) {
-                    $('body').append(response.body.html);
+                success: function (data) {
+                    $('body').append(data.html);
                 }
             });
         }
