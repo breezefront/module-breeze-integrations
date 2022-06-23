@@ -132,7 +132,12 @@
 
             customerData.reload(['gtm'], false);
 
-            gtm.subscribe(this.onUpdate);
+            this.subscription = gtm.subscribe(this.onUpdate);
+        },
+
+        destroy: function () {
+            this.subscription.dispose();
+            this._super();
         },
 
         onUpdate: function (data) {
@@ -153,7 +158,12 @@
 
             customerData.reload(['mst-gtm-addtocart'], false);
 
-            gtm.subscribe(this.onUpdate);
+            this.subscription = gtm.subscribe(this.onUpdate);
+        },
+
+        destroy: function () {
+            this.subscription.dispose();
+            this._super();
         },
 
         onUpdate: function (data) {
@@ -663,6 +673,7 @@
 
         destroy: function () {
             $('.mst-gtm__toolbar').remove();
+            $('body .mst-gtm__toolbar-extra').remove();
 
             if (this.updateToolbarTimer) {
                 clearInterval(this.updateToolbarTimer);
@@ -680,17 +691,11 @@
 
                 const $displayData = `<pre><code>${JSON.stringify(data, undefined, 4)}</code></pre>`;
 
-                const $event = $('<div />')
+                const $event = $('<div></div>')
                     .addClass('mst-gtm__toolbar-event')
-                    .append(
-                        $('<strong/>').html('#' + index)
-                    )
-                    .append(
-                        $('<i />').html('Event: ' + data.event)
-                    )
-                    .append(
-                        $('<span />').html('Open')
-                    );
+                    .append($('<strong></strong>').html('#' + index))
+                    .append($('<i></i>').html('Event: ' + data.event))
+                    .append($('<span></span>').html('Open'));
 
                 $event.on('click', function () {
                     this.displayData($displayData)
@@ -715,7 +720,7 @@
         displayData: function ($data) {
             $('body .mst-gtm__toolbar-extra').remove();
 
-            var $t = $('<div/>')
+            var $t = $('<div></div>')
                 .addClass('mst-gtm__toolbar-extra')
                 .html($data);
 
