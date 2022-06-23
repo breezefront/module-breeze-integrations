@@ -24,3 +24,4 @@ bin/magento setup:upgrade
 ### Mirasvit
 
 - Mirasvit_CacheWarmer
+- Mirasvit_GoogleTagManager
