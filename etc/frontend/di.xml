@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Swissup\Pagespeed\Helper\Config">
+        <plugin name="swissup_breeze" type="Swissup\BreezeIntegrations\Plugin\SwissupPagespeed" />
+    </type>
+    <type name="Swissup\Ajaxpro\Helper\Config">
+        <plugin name="swissup_breeze" type="Swissup\BreezeIntegrations\Plugin\SwissupAjaxpro" />
+    </type>
+    <type name="Swissup\Ajaxpro\CustomerData\AbstractCustomerData">
+        <plugin name="swissup_breeze" type="Swissup\BreezeIntegrations\Plugin\SwissupAjaxproCustomerData" />
+    </type>
+    <type name="Swissup\ProLabels\Block\Product\Labels">
+        <plugin name="swissup_breeze" type="Swissup\BreezeIntegrations\Plugin\SwissupProLabels" />
+    </type>
+</config>
