@@ -25,3 +25,9 @@ bin/magento setup:upgrade
 
 - Mirasvit_CacheWarmer
 - Mirasvit_GoogleTagManager
+
+### Swissup
+
+ - Swissup_Ajaxpro
+ - Swissup_Pagespeed
+ - Swissup_ProLabels
