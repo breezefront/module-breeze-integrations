@@ -1,33 +1,27 @@
-# Breeze integrations
+# Breeze Integrations
+
+This module includes Breeze integrations with third-party modules.
 
 ## Installation
 
-### For clients
-
-Please do not install this module. It will be installed automatically as Breeze dependency.
-
-### For developers
-
-Use this approach if you have access to our private repositories!
-
 ```bash
-composer require swissup/module-breeze-integrations --prefer-source
-bin/magento setup:upgrade
+composer require swissup/module-breeze-integrations
+bin/magento setup:upgrade --safe-mode=1
 ```
 
 ## Available integrations
 
 ### Amasty
 
-- Amasty_Xnotif (Amasty Out of Stock Notification)
+ -  Amasty_Xnotif (Amasty Out of Stock Notification)
 
 ### Mirasvit
 
-- Mirasvit_CacheWarmer
-- Mirasvit_GoogleTagManager
+ -  Mirasvit_CacheWarmer
+ -  Mirasvit_GoogleTagManager
 
 ### Swissup
 
- - Swissup_Ajaxpro
- - Swissup_Pagespeed
- - Swissup_ProLabels
+ -  Swissup_Ajaxpro
+ -  Swissup_Pagespeed
+ -  Swissup_ProLabels
