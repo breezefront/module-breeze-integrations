@@ -123,7 +123,7 @@
 
             if (selectedItemsCount === itemsCount) {
                 packContainer.addClass('-selected');
-                packBackground.width("100%");
+                packBackground.css('width','100%');
             } else if (selectedItemsCount === 0) {
                 packContainer.removeClass('-selected');
                 packBackground.width(0);
@@ -146,8 +146,7 @@
                 parentPrice = +this.options.parent_info.price,
                 oldPrice = parentPrice,
                 newPrice = 0,
-                $element = $(this.element),
-                priceFormat = this.options.priceFormat;
+                $element = $(this.element);
 
             $.each(this.options.products, function (index, priceInfo) {
                 if (self.excluded.indexOf(index) === -1) {
@@ -168,8 +167,8 @@
             this.toggleMainItemDiscount(!useOldPrice, $element);
 
             saveAmount = oldPrice - newPrice;
-            //$element.find(this.selectors.discount).html(utils.formatPrice(saveAmount, priceFormat));
-            //$element.find(this.selectors.finalPrice).html(utils.formatPrice(newPrice, priceFormat));
+            $element.find(this.selectors.discount).html($.catalog.priceUtils.formatPrice(saveAmount, this.options.priceFormat));
+            $element.find(this.selectors.finalPrice).html($.catalog.priceUtils.formatPrice(newPrice, this.options.priceFormat));
         },
 
         toggleMainItemDiscount: function (visible, element) {
