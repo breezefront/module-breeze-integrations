@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    $.widget('mage.SwatchRenderer', {
+    $.widget('AmastyMostviewedSwatchRenderer', {
         component: 'Amasty_Mostviewed/js/swatch-renderer',
 
         _RenderControls: function () {

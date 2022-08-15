@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    $.widget('mage.amPackPopupCart', {
+    $.widget('AmastyMostviewedPackPopupCart', {
         component: 'Amasty_Mostviewed/js/ampackcart_popup',
         options: {
             packId: ''
@@ -68,7 +68,7 @@
                 },
                 success: function (data) {
                     $('[data-amrelated-js="bundle-popup"]').fadeOut();
-                    $('[data-amrelated-js="add-to-cart"]').first().amPackCart('succesS', data);
+                    $('[data-amrelated-js="add-to-cart"]').first().AmastyMostviewedPackCart('succesS', data);
                 },
                 error: function () {
                     $('body').spinner(false);

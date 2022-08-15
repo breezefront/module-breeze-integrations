@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    $.widget('mage.amPackCart', {
+    $.widget('AmastyMostviewedPackCart', {
         component: 'Amasty_Mostviewed/js/ampackcart',
         options: {},
         parent: null,
