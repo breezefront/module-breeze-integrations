@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-     $.widget('mage.amPack', {
+    $.widget('mage.amPack', {
         component: 'Amasty_Mostviewed/js/ampack',
         options: {},
         excluded: [],

@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-      $.widget('mage.amPackPopupCart', {
+    $.widget('mage.amPackPopupCart', {
         component: 'Amasty_Mostviewed/js/ampackcart_popup',
         options: {
             packId: ''
@@ -30,13 +30,11 @@
                         valid = false;
                     }
                 });
-
                 if (valid) {
                     forms.each(function (index, form) {
                         form = $(form);
                         data[index] = form.serialize();
                     });
-
                     self.sendAjax(data);
                 }
             });
@@ -44,32 +42,38 @@
 
         sendAjax: function (data) {
             var self = this,
-                d = {
+                params = {
                     'amrelated_products_popup': data,
-                    'products_in_cart': this.options.productsInCart,
-                    'ajax_cart': this.options.isAjaxCartEnabled,
-                    'form_key': $.mage.cookies.get('form_key'),
+                    'products_in_cart': self.options.productsInCart,
+                    'ajax_cart': self.options.isAjaxCartEnabled,
+                    'form_key': $.cookies.get('form_key'),
                     'product_page': $('body').hasClass('catalog-product-view'),
-                    'pack_id': this.options.packId
+                    'pack_id': self.options.packId
                 };
+
             $.request.post({
                 url: self.options.url,
-                data: d,
-                dataType: 'json',
+                data: params,
                 beforeSend: function () {
-                    console.log('popup-loader-show');
-                    //$('body').loader('show');
+                    $('body').spinner(true, {css: {
+                            position: 'fixed',
+                            top: 0,
+                            bottom: 0,
+                            right: 0,
+                            left: 0,
+                            background: '#ffffff',
+                            opacity: .5
+                        }
+                    });
                 },
-                success: function (response) {
+                success: function (data) {
                     $('[data-amrelated-js="bundle-popup"]').fadeOut();
-                    $('[data-amrelated-js="add-to-cart"]').first().amPackCart('success', response);
+                    $('[data-amrelated-js="add-to-cart"]').first().amPackCart('succesS', data);
                 },
-                 error: function (response) {
-                    console.log('popup-loader-hide');
-                    //$('body').loader('hide');
+                error: function () {
+                    $('body').spinner(false);
                 }
-            })
+            });
         }
     });
-
 })();

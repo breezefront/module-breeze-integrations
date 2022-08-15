@@ -32,8 +32,9 @@
                 var data = '',
                     parent = $(this).parents(self.selectors.parent),
                     relatedData = $(parent).find('input').serialize(),
-                    mainProduct = parent.find('[data-amrelated-js="pack-item"].-main');
+                    mainProduct = $(parent).find('[data-amrelated-js="pack-item"].-main');
                 form = self.getMainProductForm(mainProduct.data('product-id'));
+
                 if (form && form.length) {
                     validator = form.validation({radioCheckboxClosest: '.nested'})
                 }
@@ -41,7 +42,7 @@
                     if (form && form.length) {
                         data = form.serialize();
                     } else {
-                        data = 'form_key=' + $.mage.cookies.get('form_key');
+                        data = 'form_key=' + $.cookies.get('form_key');
                         if (mainProduct.length) {
                             data += '&' +'amrelated_products[' + mainProduct.data('product-id') + ']=' + 1;
                         }
@@ -51,21 +52,27 @@
                     data += '&ajax_cart=' + self.options.isAjaxCartEnabled;
                     data += '&product_page=' + $('body').hasClass('catalog-product-view');
                     data += '&pack_id=' + $(e.currentTarget).closest(self.selectors.parent).data('pack-id');
+
                     $.request.post({
                         url: self.options.url,
                         data: data,
-                        dataType: 'json',
                         beforeSend: function () {
-                            console.log('loader-show');
-                            //$('body').loader('show');
+                            $('body').spinner(true, {css: {
+                                    position: 'fixed',
+                                    top: 0,
+                                    bottom: 0,
+                                    right: 0,
+                                    left: 0,
+                                    background: '#ffffff',
+                                    opacity: .5
+                                }
+                            });
                         },
-
-                        success: function (response) {
-                            self.success(response);
+                        success: function (data) {
+                            self.succesS(data);
                         },
-
                         error: function () {
-                            console.log('loader-hide');
+                            $('body').spinner(false);
                             self._scrollToTop();
                         }
                     });
@@ -94,10 +101,8 @@
             return isMainProductForm ? form : null;
         },
 
-        success: function (response) {
-            console.log('loader-hide');
-            //$('body').loader('hide');
-
+        succesS: function (response) {
+            $('body').spinner(false);
             if (response.is_add_to_cart) {
                 if ($('body').hasClass('checkout-cart-index')) {
                     window.location.reload();
@@ -156,9 +161,7 @@
                     $('.swatch-option-tooltip').hide();
                 }
             });
-
             $(this.selectors.mainContainer).trigger('contentUpdated');
         }
     });
-
 })();
