@@ -5,7 +5,6 @@
         component: 'Amasty_Mostviewed/js/ampack',
         options: {},
         excluded: [],
-        mediaBreakpoint: '(min-width: 768px)',
         selectors: {
             'discount': '[data-amrelated-js="bundle-price-discount"]',
             'itemDiscount': '[data-amrelated-js="item-price-discount"]',
@@ -32,44 +31,36 @@
                 self.changeEvent($(this));
             })
 
-            this.observeClickOnMobile();
+            this.toggleCollapsingListeners();
         },
 
-        observeClickOnMobile: function () {
-            var self = this,
-                media = matchMedia(self.mediaBreakpoint);
-                self.toggleCollapsingListeners(media);
-        },
-
-        toggleCollapsingListeners: function (mql) {
-            var isEnabled = mql.matches;
+        toggleCollapsingListeners: function () {
             var self = this,
                 packItem = $(this.element).find(this.selectors.packItem),
                 packTitle = $(this.element).find(this.selectors.packTitle),
                 target,
                 checkbox;
 
-            if (isEnabled) {
-                packItem.on('click.amPack', function (event) {
-                    target = $(event.target);
 
-                    if (!target.hasClass(self.classes.relatedLink)
-                        && !target.parents().hasClass(self.classes.relatedLink)
-                    ) {
-                        checkbox = target.parents(self.selectors.packItem).find(self.selectors.checkbox);
+            packItem.on('click.amPack', function (event) {
+                target = $(event.target);
 
-                        checkbox.prop('checked', !checkbox.prop('checked')).trigger('change');
-                    }
-                });
+                if (!target.hasClass(self.classes.relatedLink)
+                    && !target.parents().hasClass(self.classes.relatedLink)
+                ) {
+                    checkbox = target.parents(self.selectors.packItem).find(self.selectors.checkbox);
 
-                packTitle.on('click.amPack', function (event) {
-                    self.toggleItems(event);
-                });
-            } else {
-                packItem.off('click.amPack');
-                packTitle.off('click.amPack');
-                self.toggleItems(false);
-            }
+                    checkbox.prop('checked', !checkbox.prop('checked')).trigger('change');
+                }
+            });
+
+            packTitle.on('click.amPack', function (event) {
+                self.toggleItems(event);
+            });
+
+            packTitle.on('mouseenter.amPack', (event) => {
+                event.target.style.cursor = 'pointer';
+            });
         },
 
         toggleItems: function (event) {
