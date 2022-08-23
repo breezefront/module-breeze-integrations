@@ -14,6 +14,7 @@ bin/magento setup:upgrade --safe-mode=1
 ### Amasty
 
  -  Amasty_Xnotif (Amasty Out of Stock Notification)
+ -  Amasty_Mostviewed
 
 ### Mirasvit
 
