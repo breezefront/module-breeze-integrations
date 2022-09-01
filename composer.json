@@ -2,10 +2,10 @@
     "name": "swissup/module-breeze-integrations",
     "description": "Third-party modules integrations with Breeze Frontend",
     "type": "magento2-module",
-    "version": "1.2.4",
+    "version": "1.2.5",
     "license": "OSL-3.0",
     "require": {
-        "swissup/module-breeze": "^1.13.8"
+        "swissup/module-breeze": "^1.13.9"
     },
     "autoload": {
         "files": [
