@@ -27,9 +27,9 @@
             var self = this;
             if (!this.element) return;
 
-            $(this.selectors.checkbox).on('change', function(){
+            $(this.element).find(this.selectors.checkbox).on("change", _.debounce(function () {
                 self.changeEvent($(this));
-            })
+            }), 200);
 
             this.toggleCollapsingListeners();
         },
