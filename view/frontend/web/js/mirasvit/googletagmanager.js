@@ -2,7 +2,6 @@
     'use strict';
 
     $(document).on('turbolinks:before-cache', function () {
-        window.dataLayer = [];
         window.mstGtmProducts = [];
     });
 
@@ -239,7 +238,9 @@
         },
 
         destroy: function () {
-            window.dataLayer = [];
+            window.dataLayer.push(function() {
+              this.reset();
+            })
         },
 
         initEventSelector: function () {
