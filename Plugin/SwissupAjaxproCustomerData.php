@@ -23,9 +23,8 @@ class SwissupAjaxproCustomerData
      * @param mixed $result
      * @return mixed
      */
-    public function beforeGetBlockHtml(
+    public function beforeSetHandles(
         $subject,
-        $blockName,
         $handles
     ) {
         if (!$this->helper->isEnabled()) {
@@ -43,6 +42,6 @@ class SwissupAjaxproCustomerData
 
         $handles = array_merge($handles, $breezeHandles);
 
-        return [$blockName, $handles];
+        return [$handles];
     }
 }
