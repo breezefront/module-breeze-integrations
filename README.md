@@ -1,6 +1,9 @@
 # Breeze Integrations
 
-This module includes Breeze integrations with Swissup modules.
+This module includes Breeze integrations with Swissup modules only. 
+
+If you are looking for module from another vendor, please 
+[check the separate page](https://breezefront.com/extensions).
 
 ## Installation
 
