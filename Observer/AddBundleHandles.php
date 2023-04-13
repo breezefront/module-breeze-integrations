@@ -2,7 +2,7 @@
 
 namespace Swissup\BreezeIntegrations\Observer;
 
-class AddLayoutUpdates implements \Magento\Framework\Event\ObserverInterface
+class AddBundleHandles implements \Magento\Framework\Event\ObserverInterface
 {
     private \Swissup\BreezeIntegrations\Model\LayoutHandlesProvider $handlesProvider;
 
@@ -14,10 +14,9 @@ class AddLayoutUpdates implements \Magento\Framework\Event\ObserverInterface
 
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
-        $layoutUpdate = $observer->getLayout()->getUpdate();
-
-        foreach ($this->handlesProvider->getHandles() as $handle) {
-            $layoutUpdate->addHandle($handle);
-        }
+        $observer->getTransport()->setHandles(array_merge(
+            $observer->getTransport()->getHandles(),
+            $this->handlesProvider->getHandles()
+        ));
     }
 }
