@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
-    <event name="swissup_breeze_bundle_collect_handles">
-        <observer name="swissup_breezeintegrations" instance="Swissup\BreezeIntegrations\Observer\AddBundleHandles"/>
-    </event>
-</config>
