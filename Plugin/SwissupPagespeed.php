@@ -33,4 +33,17 @@ class SwissupPagespeed
 
         return false;
     }
+
+    // Enable critical css if default is enabled.
+    // This prevents a few seconds of visible unstyled page.
+    public function afterIsCriticalCssEnable(
+        \Swissup\Pagespeed\Helper\Config $subject,
+        $result
+    ) {
+        if (!$result || !$this->helper->isEnabled()) {
+            return $result;
+        }
+
+        return $this->helper->getConfig('dev/css/use_css_critical_path');
+    }
 }
