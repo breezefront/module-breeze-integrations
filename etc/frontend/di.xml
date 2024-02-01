@@ -10,6 +10,9 @@
     <type name="Swissup\Ajaxpro\CustomerData\AbstractCustomerData">
         <plugin name="swissup_breeze" type="Swissup\BreezeIntegrations\Plugin\SwissupAjaxproCustomerData" />
     </type>
+    <type name="Swissup\Ajaxpro\CustomerData\AbstractSectionData">
+        <plugin name="swissup_breeze" type="Swissup\BreezeIntegrations\Plugin\SwissupAjaxproCustomerData" />
+    </type>
     <type name="Swissup\ProLabels\Block\Product\Labels">
         <plugin name="swissup_breeze" type="Swissup\BreezeIntegrations\Plugin\SwissupProLabels" />
     </type>
