@@ -46,4 +46,15 @@ class SwissupPagespeed
 
         return $this->helper->getConfig('dev/css/use_css_critical_path');
     }
+
+    // Breeze has built-in critical CSS support for all pages
+    public function afterIsAllowedCriticalCssOnCurrentPage(
+        \Swissup\Pagespeed\Helper\Config $subject,
+        $result
+    ) {
+        if ($result || !$this->helper->isEnabled()) {
+            return $result;
+        }
+        return true;
+    }
 }
