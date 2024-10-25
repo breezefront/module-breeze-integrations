@@ -57,4 +57,25 @@ class SwissupPagespeed
         }
         return true;
     }
+
+    public function afterIsAdvancedJsBundling(
+        \Swissup\Pagespeed\Helper\Config $subject,
+        $result
+    ) {
+        return $this->helper->isEnabled() ? false : $result;
+    }
+
+    public function afterIsInteractiveDeferEnable(
+        \Swissup\Pagespeed\Helper\Config $subject,
+        $result
+    ) {
+        return $this->helper->isEnabled() ? false : $result;
+    }
+
+    public function afterIsDeferJsUnpackEnable(
+        \Swissup\Pagespeed\Helper\Config $subject,
+        $result
+    ) {
+        return $this->helper->isEnabled() ? false : $result;
+    }
 }
