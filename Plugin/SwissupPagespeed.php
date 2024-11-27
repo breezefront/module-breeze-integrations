@@ -20,18 +20,14 @@ class SwissupPagespeed
 
     /**
      * @param \Swissup\Pagespeed\Helper\Config $subject
-     * @param boolean $result
-     * @return boolean
+     * @param string $result
+     * @return string
      */
-    public function afterIsDeferJsEnable(
+    public function afterGetDelayScriptType(
         \Swissup\Pagespeed\Helper\Config $subject,
         $result
     ) {
-        if (!$result || !$this->helper->isEnabled()) {
-            return $result;
-        }
-
-        return false;
+        return $this->helper->isEnabled() ? 'lazy' : $result;
     }
 
     // Enable critical css if default is enabled.
