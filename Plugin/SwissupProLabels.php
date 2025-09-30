@@ -29,6 +29,8 @@ class SwissupProLabels
             return $result;
         }
 
-        return $result . ', .breeze-gallery .main-image-wrapper';
+        return $result
+            . ', .breeze-gallery:not(.expanded) .main-image-wrapper'
+            . ', .breeze-gallery.expanded .images a:not([data-clone]):first-of-type > img';
     }
 }
