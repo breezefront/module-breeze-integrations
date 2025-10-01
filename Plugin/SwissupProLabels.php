@@ -30,7 +30,8 @@ class SwissupProLabels
         }
 
         return $result
-            . ', .breeze-gallery:not(.expanded) .main-image-wrapper'
-            . ', .breeze-gallery.expanded .images a:not([data-clone]):first-of-type > img';
+            . ', .breeze-gallery:not(.expanded) .main-image-wrapper' // default mode
+            . ', .breeze-gallery.expanded .images a:first-child:not([data-clone]) > img' // loop is disabled
+            . ', .breeze-gallery.expanded .images a[data-clone]:first-child + a > img';  // first image
     }
 }
